@@ -6,7 +6,6 @@ class Asteroid extends GameObject {//=
     vel = new PVector(0, 1);
     vel.rotate(random(0, TWO_PI));
     size = 100;
-    respawn = true;
   }
   
   Asteroid(int s, float x, float y) {
@@ -15,7 +14,6 @@ class Asteroid extends GameObject {//=
     vel = new PVector (0, 1);
     vel.rotate(random(0, TWO_PI));
     size = s;
-    respawn = false;
   }
 
   void show() {
@@ -38,10 +36,10 @@ class Asteroid extends GameObject {//=
           myObj.lives = 0;
           lives = 0;
           
-          //if(respawn = true) {//======
+          if(size >= 50) {//======
           myObjects.add(new Asteroid(size/2, loc.x, loc.y));
           myObjects.add(new Asteroid(size/2, loc.x, loc.y));
-          //}
+          }//======
           
         }//=====
       }//====

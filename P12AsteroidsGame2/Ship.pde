@@ -26,9 +26,16 @@ class Ship extends GameObject {
   void act() {
     super.act();
     
+    //Speed limit
+    if (vel.mag() > 5) vel.setMag(5);
+    if (upkey == false) vel.setMag(vel.mag()*0.95);
+    
     shotTimer++;
     
-    if (upkey) vel.add(dir);
+    if (upkey) {
+      vel.add(dir);
+      myObjects.add(new Fire());
+    }
     if (downkey) vel.sub(dir);
     if (leftkey) dir.rotate(-radians(5));
     if (rightkey) dir.rotate(radians(5));
